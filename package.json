@@ -1,6 +1,6 @@
 {
   "name": "react-magic-router",
-  "version": "6.1.0",
+  "version": "6.1.2",
   "description": "React magic router support system type for react router dom v6",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -15,10 +15,10 @@
   "homepage": "https://github.com/cin12211/react-magic-router#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsup src/index.ts --format esm,cjs --dts"
+    "type-check": "tsc --noEmit",
+    "build": "npm run type-check && tsup src/index.ts --format esm,cjs --dts --minify",
+    "publish-to-npm": "npm run build && npm publish --access public"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "query-string": "^9.1.0"

@@ -5,6 +5,7 @@ import {
   useNavigate,
   useParams,
   matchRoutes,
+  NavigateOptions,
 } from "react-router-dom";
 import type { ExtractParams } from "../types";
 
@@ -28,7 +29,7 @@ export function useMagicRouter<P extends GlobalMagicRouter, K extends keyof P>(
   const location = useLocation();
 
   const query = useMemo(() => {
-    const queryStringValue = location.hash.split("?");
+    const queryStringValue = location.search.split("?");
 
     const queryObject = queryString.parse(queryStringValue[1]);
 
@@ -55,10 +56,10 @@ export function useMagicRouter<P extends GlobalMagicRouter, K extends keyof P>(
     return newPath;
   }
 
-  function navigate(nav: PublicRouterNavigator) {
+  function navigate(nav: PublicRouterNavigator, options?: NavigateOptions) {
     const newPath = getNavigatePath(nav);
 
-    navig(newPath);
+    navig(newPath, options);
   }
 
   const isMatchRoutes = (paths: (keyof P)[]) => {
