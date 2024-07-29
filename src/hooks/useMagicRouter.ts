@@ -16,7 +16,7 @@ type PublicRouterNavigator<
       hash?: string;
       param?: ExtractParams<K extends string ? K : "">;
       path: K;
-      query?: T[K];
+      query?: Partial<T[K]>;
     }
   : never;
 
