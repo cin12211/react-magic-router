@@ -1,6 +1,6 @@
 {
   "name": "react-magic-router",
-  "version": "6.0.12",
+  "version": "6.0.13",
   "description": "React magic router support system type for react router dom v6",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
