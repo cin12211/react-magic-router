@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import type { ExtractParams } from "../types";
 
-type PublicRouterNavigator<
+export type NavigatePath<
   T extends GlobalMagicRouter = GlobalMagicRouter,
   K extends keyof T = keyof T
 > = K extends K
@@ -38,7 +38,7 @@ export function useMagicRouter<P extends GlobalMagicRouter, K extends keyof P>(
 
   const navig = useNavigate();
 
-  function getNavigatePath({ param, path, query }: PublicRouterNavigator) {
+  function getNavigatePath({ param, path, query }: NavigatePath) {
     let newPath = String(path);
 
     if (param) {
@@ -56,7 +56,7 @@ export function useMagicRouter<P extends GlobalMagicRouter, K extends keyof P>(
     return newPath;
   }
 
-  function navigate(nav: PublicRouterNavigator, options?: NavigateOptions) {
+  function navigate(nav: NavigatePath, options?: NavigateOptions) {
     const newPath = getNavigatePath(nav);
 
     navig(newPath, options);
